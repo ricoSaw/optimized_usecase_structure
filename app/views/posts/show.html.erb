@@ -16,18 +16,18 @@
 <h3>Comments</h3>
 
 <h4>List Comments</h4>
-<% @comments.each do |comment| %>
+<% @post.comments.each do |comment| %>
   <p style="border-top: 1px solid grey;"><%= comment.body %></p>
 <% end %>
 
 <h4>Create Comments</h4>
-<%= form_for(@comment) do |f| %>
-  <% if @comment.errors.any? %>
+<%= form_for(@comment_form, as: :comment, url: comments_path) do |f| %>
+  <% if @comment_form.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <h2><%= pluralize(@comment_form.errors.count, "error") %> prohibited this post from being saved:</h2>
 
       <ul>
-      <% @comment.errors.full_messages.each do |comment| %>
+      <% @comment_form.errors.full_messages.each do |comment| %>
         <li><%= comment %></li>
       <% end %>
       </ul>
