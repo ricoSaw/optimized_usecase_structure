@@ -2,7 +2,7 @@ module Decorators
   module Posts
     class CrazyStuff < ::Decorators::DecoratorBase
 
-      def add_crazy_stuff_to_body
+      def add_crazy_stuff
         "This is crazy stuff! #{@decorated.body}"
       end
     end

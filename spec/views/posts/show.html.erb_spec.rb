@@ -16,4 +16,4 @@ RSpec.describe "posts/show", type: :view do
     expect(rendered).to match(/Title/)
     expect(rendered).to match(/MyText/)
   end
-end
+end if false

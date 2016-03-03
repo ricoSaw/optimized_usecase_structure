@@ -18,4 +18,4 @@ RSpec.describe "posts/edit", type: :view do
       assert_select "textarea#post_body[name=?]", "post[body]"
     end
   end
-end
+end if false

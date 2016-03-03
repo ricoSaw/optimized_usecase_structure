@@ -10,8 +10,10 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @comment_form = Forms::Comments::CreateByUser.new
-    @comment_form.for_post(@post)
+    @comment_form         = Forms::Comments::CreateByUser.new
+    @comment_form.post_id = @post.id
+
+    @presenter = Presenters::Posts::Simple.new
   end
 
   # GET /posts/new
@@ -21,8 +23,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    @post_form = Forms::Posts::UpdateByUser.new
-    @post_form.for_post(@post)
+    @post_form = Forms::Posts::UpdateByUser.new.for_post(@post)
   end
 
   # POST /posts
@@ -44,8 +45,8 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
-    @post_form = Forms::Posts::UpdateByUser.new(post_params)
-    @post_form.update(@post)
+    @post_form = Forms::Posts::UpdateByUser.new(post_params).set_id(@post.id)
+
     respond_to do |format|
       if @post_form.call
         format.html { redirect_to post_path(@post.id), notice: 'Post was successfully updated.' }

@@ -15,10 +15,6 @@ module Forms
         create_comment if valid?
       end
 
-      def for_post(post)
-        @post_id = post.id
-      end
-
       private
 
       def create_comment

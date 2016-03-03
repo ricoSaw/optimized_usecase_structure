@@ -14,10 +14,12 @@ module Forms
       def for_post(post)
          @title = post.title
          @body  = post.body
+         self
       end
 
-      def update(post)
-         @id = post.id
+      def set_id(post_id)
+         @id = post_id
+         self
       end
 
       def call
